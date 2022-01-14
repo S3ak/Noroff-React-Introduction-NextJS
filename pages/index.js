@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 import styles from "../styles/Home.module.css";
 import List from "../components/list/list";
 import Title from "../components/title/title";
+
 import Button from "../components/button/button";
-import { useState } from "react";
+import Counter from "../components/counter/counter";
 
 export default function Home() {
   const [bob, setBob] = useState("bar");
@@ -23,6 +26,9 @@ export default function Home() {
       >
         Click Me
       </Button>
+      <br />
+
+      <Counter />
     </div>
   );
 }
