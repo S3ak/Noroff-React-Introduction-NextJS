@@ -19,16 +19,17 @@ export default function Home() {
       <Title customColor="blue">Awesome example</Title>
       <p>{bob}</p>
       <List />
-      <Button
+      {/* <Button
         onClick={() => {
           handleOnClick();
         }}
       >
         Click Me
-      </Button>
+      </Button> */}
       <br />
-
-      <Counter />
+      <div style={{ backgroundColor: "#76c5f56e" }}>
+        <Counter />
+      </div>
     </div>
   );
 }
