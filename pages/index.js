@@ -1,35 +1,36 @@
 import { useState } from "react";
 
-import styles from "../styles/Home.module.css";
 import List from "../components/list/list";
 import Title from "../components/title/title";
 
 import Button from "../components/button/button";
 import Counter from "../components/counter/counter";
+import styles from "../styles/Home.module.css";
+import PeopleList from "../components/people/peopleList";
+import LogEffect from "../components/log-effect/logEffect";
 
 export default function Home() {
-  const [bob, setBob] = useState("bar");
-
-  const handleOnClick = () => {
-    setBob("Fifa 2022");
-  };
+  // const handleOnClick = () => {
+  //   setBob("Fifa 2022");
+  // };
 
   return (
     <div className={styles.container}>
       <Title customColor="blue">Awesome example</Title>
-      <p>{bob}</p>
-      <List />
-      {/* <Button
+      <PeopleList />
+
+      {/* <List />
+      <Button
         onClick={() => {
           handleOnClick();
         }}
       >
         Click Me
-      </Button> */}
+      </Button>
       <br />
-      <div style={{ backgroundColor: "#76c5f56e" }}>
+      <section style={{ backgroundColor: "#76c5f56e", padding: "2vw" }}>
         <Counter />
-      </div>
+      </section> */}
     </div>
   );
 }
