@@ -1,34 +1,51 @@
 import { useState, useEffect } from "react";
+import Axios from "axios";
 
+// This component displays a list of people from an API endpoint
 const People = () => {
+  // This variable holds the list of people
   const [people, setPeople] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState();
 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
 
-      const response = await fetch("https://reqres.in/api/users");
-      const json = await response.json();
-
-      setPeople(json.data);
-      setIsLoading(false);
+      try {
+        //   NOTE: We can use Fetch or Axios
+        const { data } = await Axios.get("https://reqres.in/api/users");
+        setPeople(data.data);
+      } catch (error) {
+        setIsError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     fetchData();
   }, []);
 
+  if (!people || isError) {
+    return <h2>Something went wrong 😢</h2>;
+  }
+
   if (isLoading) {
     return <h2>Loading</h2>;
   }
 
+  if (people.length === 0) {
+    return <h2>There are no people to show</h2>;
+  }
+
   return (
     <section>
-      {people.map((person) => (
-        <div key={person.id}>
-          <h2>{person.first_name}</h2>
-          <p>{person.email}</p>
-          <img src={person.avatar} alt={person.first_name} />
+      {people.map(({ id, first_name, email, avatar }) => (
+        <div key={id}>
+          <h2>{first_name}</h2>
+          <p>{email}</p>
+          {/* NOTE: Ignore the warning message  */}
+          <img src={avatar} alt={first_name} />
         </div>
       ))}
     </section>
