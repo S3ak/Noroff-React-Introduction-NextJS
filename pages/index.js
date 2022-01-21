@@ -10,10 +10,6 @@ import PeopleList from "../components/people/peopleList";
 import LogEffect from "../components/log-effect/logEffect";
 
 export default function Home() {
-  // const handleOnClick = () => {
-  //   setBob("Fifa 2022");
-  // };
-
   return (
     <div className={styles.container}>
       <Title customColor="blue">Awesome example</Title>
